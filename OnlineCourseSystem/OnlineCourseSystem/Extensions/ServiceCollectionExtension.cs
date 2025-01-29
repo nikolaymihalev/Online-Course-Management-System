@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnlineCourseSystem.Infrastructure.Common;
 using OnlineCourseSystem.Infrastructure.Data;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -10,6 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
             var connectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string not found.");
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddScoped<IRepository, Repository>();
 
             return services;
         }
