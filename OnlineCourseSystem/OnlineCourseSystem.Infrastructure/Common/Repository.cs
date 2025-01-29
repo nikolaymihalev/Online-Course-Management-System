@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using OnlineCourseSystem.Infrastructure.Data;
 
 namespace OnlineCourseSystem.Infrastructure.Common
@@ -37,5 +38,17 @@ namespace OnlineCourseSystem.Infrastructure.Common
         public async Task<T?> GetByIdAsync<T>(object id) where T : class => await this.DbSet<T>().FindAsync(id);
 
         public async Task<int> SaveChangesAsync() => await this.context.SaveChangesAsync();
+
+        public void Delete<T>(T entity) where T : class
+        {
+            EntityEntry entry = this.context.Entry(entity);
+
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet<T>().Attach(entity);
+            }
+
+            entry.State = EntityState.Deleted;
+        }
     }
 }

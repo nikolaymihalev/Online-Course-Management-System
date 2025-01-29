@@ -44,6 +44,13 @@
         Task DeleteAsync<T>(object id) where T : class;
 
         /// <summary>
+        /// Delete entity from database
+        /// </summary>
+        /// <typeparam name="T">The type of the entity to be deleted.</typeparam>
+        /// <param name="entity">The entity to be deleted.</param>
+        void Delete<T>(T entity) where T : class;
+
+        /// <summary>
         /// Saves all changes made to the entities in the context.
         /// </summary>
         /// <returns>A task that returns the number of rows affected by the save operation.</returns>

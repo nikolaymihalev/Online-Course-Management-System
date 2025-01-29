@@ -53,7 +53,7 @@ namespace OnlineCourseSystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses", t =>
+                    b.ToTable("Courses", null, t =>
                         {
                             t.HasComment("Represents the Course entity");
                         });
@@ -97,7 +97,7 @@ namespace OnlineCourseSystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students", t =>
+                    b.ToTable("Students", null, t =>
                         {
                             t.HasComment("Represents the Student entity");
                         });
@@ -135,7 +135,7 @@ namespace OnlineCourseSystem.Infrastructure.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentCourses", t =>
+                    b.ToTable("StudentCourses", null, t =>
                         {
                             t.HasComment("Represents the Student Course mapping entity");
                         });

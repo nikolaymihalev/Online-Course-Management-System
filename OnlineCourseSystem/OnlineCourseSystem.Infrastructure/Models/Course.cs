@@ -47,12 +47,6 @@ namespace OnlineCourseSystem.Infrastructure.Models
         public int EnrolledStudents { get; set; }
 
         /// <summary>
-        /// Availability of the course
-        /// </summary>
-        [Comment("Course availability")]
-        public bool IsAvailable => this.EnrolledStudents < this.MaxStudents;
-
-        /// <summary>
         /// Collection of student courses
         /// </summary>
         public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
