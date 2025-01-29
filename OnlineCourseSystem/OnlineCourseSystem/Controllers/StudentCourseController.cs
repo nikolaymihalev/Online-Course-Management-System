@@ -18,10 +18,10 @@ namespace OnlineCourseSystem.Controllers
         /// <summary>
         /// Retrieves a list of all registered courses for a student
         /// </summary>
-        [HttpGet]
-        public async Task<IActionResult> GetStudentsCourses(int studentId)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudentsCourses(int id)
         {
-            var model = await studentCourseService.GetStudentsCourses(studentId);
+            var model = await studentCourseService.GetStudentsCourses(id);
             return Ok(model);
         }
 

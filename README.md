@@ -33,22 +33,22 @@ This is the main API project that exposes endpoints for managing courses and stu
 #### Controllers:
 
 - **CourseController**
-  - `GET /courses` - Retrieves a list of all available courses.
-  - `POST /courses` - Adds a new course.
-  - `GET /courses/{id}` - Retrieves a course by its ID.
-  - `PUT /courses` - Updates an existing course.
-  - `DELETE /courses/{id}` - Deletes a course.
+  - `GET /api/course` - Retrieves a list of all available courses.
+  - `POST /api/course` - Adds a new course.
+  - `GET /api/course/{id}` - Retrieves a course by its ID.
+  - `PUT /api/course` - Updates an existing course.
+  - `DELETE /api/course/{id}` - Deletes a course.
 - **StudentController**
-  - `POST /students` - Adds a new student.
-  - `GET /students` - Retrieves a list of all students.
-  - `GET /students/{id}` - Retrieves a student by ID.
-  - `PUT /students` - Updates an existing student.
-  - `DELETE /students/{id}` - Deletes a student.
+  - `POST /api/student` - Adds a new student.
+  - `GET /api/student` - Retrieves a list of all students.
+  - `GET /api/student/{id}` - Retrieves a student by ID.
+  - `PUT /api/student` - Updates an existing student.
+  - `DELETE /api/student/{id}` - Deletes a student.
 - **StudentCourseController**
-  - `GET /studentCourses/{studentId}` - Retrieves all registered courses for a student.
-  - `POST /studentCourses/join` - Registers a student to a course.
-  - `DELETE /studentCourses/leave` - Removes a student's registration from a course.
-  - `PUT /studentCourses/progress` - Updates a student's progress in a course.
+  - `GET /api/studentCourse/{id}` - Retrieves all registered courses for a student.
+  - `POST /api/studentCourse/join` - Registers a student to a course.
+  - `DELETE /api/studentCourse/leave` - Removes a student's registration from a course.
+  - `PUT /api/studentCourse` - Updates a student's progress in a course.
 
 ### 2. OnlineCourseSystem.Core (Business Logic Layer)
 
