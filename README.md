@@ -1,4 +1,4 @@
-# Online-Course-Management-System
+# Online Course Management System
 
 ## Overview
 
@@ -86,15 +86,14 @@ This is the main API project that exposes endpoints for managing courses and stu
 1. Clone the repository:
    ```sh
    git clone https://github.com/nikolaymihalev/Online-Course-Management-System.git
-   cd OnlineCourseSystem
    ```
 2. Set up the database:
    ```sh
    dotnet ef database update
    ```
-3. Run the application:
+3. Navigate to the `OnlineCourseSystem` and run the application:
    ```sh
-   dotnet run --project OnlineCourseSystem
+   dotnet run
    ```
 4. Access Swagger documentation at:
    ```
