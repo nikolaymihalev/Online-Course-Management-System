@@ -11,7 +11,7 @@ namespace OnlineCourseSystem.Core.Contracts
         /// Retrieves a list of all students in the system.
         /// </summary>
         /// <returns>A task that returns a collection of student information models.</returns>
-        Task<IEnumerable<StudentInfoModel>> AllStudentsAsync();
+        Task<IEnumerable<StudentInfoModel>> GetAllStudentsAsync();
 
         /// <summary>
         /// Adds a new student to the system.

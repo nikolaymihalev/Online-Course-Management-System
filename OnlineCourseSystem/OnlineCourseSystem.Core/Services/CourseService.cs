@@ -32,7 +32,7 @@ namespace OnlineCourseSystem.Core.Services
 
         public async Task<IEnumerable<CourseInfoModel>> GetCoursesAsync()
         {
-            return await repository.AllReadonly<Course>()
+            var allCourses = await repository.AllReadonly<Course>()
                 .Select(x => new CourseInfoModel()
                 {
                     Id = x.Id,
@@ -41,9 +41,10 @@ namespace OnlineCourseSystem.Core.Services
                     MaxStudents = x.MaxStudents,
                     EnrolledStudents = x.EnrolledStudents,
                 })
-                .Where(x => x.IsAvailable)
                 .OrderByDescending(x => x.Id)
                 .ToListAsync();
+
+            return allCourses.Where(x => x.IsAvailable);
         }
 
         public async Task DeleteAsync(int id)
@@ -55,7 +56,7 @@ namespace OnlineCourseSystem.Core.Services
             }
             catch (Exception)
             {
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Course"));
             }
         }
 
@@ -64,7 +65,7 @@ namespace OnlineCourseSystem.Core.Services
             var entity = await repository.GetByIdAsync<Course>(model.Id);
 
             if(entity is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Course"));
 
             entity.Name = model.Name;
             entity.Description = model.Description;
@@ -78,7 +79,7 @@ namespace OnlineCourseSystem.Core.Services
             var model = await repository.GetByIdAsync<Course>(id);
 
             if(model is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Course"));
 
             return new CourseInfoModel()
             {

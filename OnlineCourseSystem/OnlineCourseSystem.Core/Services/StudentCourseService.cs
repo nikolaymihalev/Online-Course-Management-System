@@ -38,7 +38,7 @@ namespace OnlineCourseSystem.Core.Services
                 .FirstOrDefaultAsync(x => x.CourseId == courseId && x.StudentId == studentId);
 
             if (entity is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student-Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student-Course"));
 
             var course = await repository.GetByIdAsync<Course>(courseId);
 
@@ -60,12 +60,12 @@ namespace OnlineCourseSystem.Core.Services
             var student = await repository.GetByIdAsync<Student>(studentId);
 
             if (student is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student"));
 
             var course = await repository.GetByIdAsync<Course>(courseId);
 
             if (course is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Course"));
 
             if (course.EnrolledStudents + 1 > course.MaxStudents)
                 throw new ArgumentException(Messages.CourseIsFull);
@@ -93,7 +93,7 @@ namespace OnlineCourseSystem.Core.Services
                 .FirstOrDefaultAsync(x => x.CourseId == courseId && x.StudentId == studentId);
 
             if (entity is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student-Course"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student-Course"));
 
             entity.Progress = progress;
 

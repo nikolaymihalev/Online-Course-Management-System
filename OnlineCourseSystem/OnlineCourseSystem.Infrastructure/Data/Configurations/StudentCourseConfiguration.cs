@@ -12,8 +12,8 @@ namespace OnlineCourseSystem.Infrastructure.Data.Configurations
 
             builder.HasKey(k => new { k.CourseId, k.StudentId });
 
-            builder.HasOne(c => c.Course).WithMany(x => x.StudentCourses).OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(s => s.Student).WithMany(x => x.StudentCourses).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(c => c.Course).WithMany(x => x.StudentCourses).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(s => s.Student).WithMany(x => x.StudentCourses).OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(seed.StudentCourse);
         }

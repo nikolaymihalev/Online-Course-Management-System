@@ -8,6 +8,7 @@
         public const string AlreadyExist = "{0} already exists!";
         public const string EmailAddress = "Email is not valid!";
         public const string CourseIsFull = "The course has a maximum number of students!";
-        public const string WrongProgress = "The progress is invlaid";
+        public const string WrongProgress = "The progress is invalid!";
+        public const string SuccessfulOperation = "Successfully {0} {1}!";
     }
 }

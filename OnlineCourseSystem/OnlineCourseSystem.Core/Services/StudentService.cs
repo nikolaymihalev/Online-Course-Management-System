@@ -29,7 +29,7 @@ namespace OnlineCourseSystem.Core.Services
             await repository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<StudentInfoModel>> AllStudentsAsync()
+        public async Task<IEnumerable<StudentInfoModel>> GetAllStudentsAsync()
         {
             return await repository.AllReadonly<Student>()
                 .Select(x => new StudentInfoModel()
@@ -52,7 +52,7 @@ namespace OnlineCourseSystem.Core.Services
             }
             catch (Exception)
             {
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student"));
             }
         }
 
@@ -61,7 +61,7 @@ namespace OnlineCourseSystem.Core.Services
             var entity = await repository.GetByIdAsync<Student>(model.Id);
 
             if(entity is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student"));
 
             entity.FirstName = model.FirstName;
             entity.LastName = model.LastName;
@@ -75,7 +75,7 @@ namespace OnlineCourseSystem.Core.Services
             var entity = await repository.GetByIdAsync<Student>(id);
 
             if (entity is null)
-                throw new ArgumentNullException(string.Format(Messages.DoesntExist, "Student"));
+                throw new ArgumentException(string.Format(Messages.DoesntExist, "Student"));
 
             return new StudentInfoModel()
             {
